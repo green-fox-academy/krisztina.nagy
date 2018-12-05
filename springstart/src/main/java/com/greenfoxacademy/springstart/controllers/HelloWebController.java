@@ -28,17 +28,19 @@ public class HelloWebController {
         Random rand = new Random();
 
         int helloIndex = rand.nextInt(hellos.length);
-        int size = rand.nextInt();
+        int size = rand.nextInt(50)+8;
 
-        float r = rand.nextFloat();
-        float g = rand.nextFloat();
-        float b = rand.nextFloat();
+        int r = rand.nextInt(255);
+        int g = rand.nextInt(255);
+        int b = rand.nextInt(255);
 
         Color randColor = new Color(r, g, b);
 
         model.addAttribute("hello", hellos[helloIndex]);
         model.addAttribute("name", " "+name);
         model.addAttribute("count", counter.incrementAndGet());
+        model.addAttribute("color", "rgb(" + r +", " + g +", " + b + ")");
+        model.addAttribute("size", size);
 
 
 
