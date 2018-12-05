@@ -21,7 +21,7 @@ public class SpringstartApplication {
     @RequestMapping(value="/hello")
     @ResponseBody
     private static String hello() {
-        String s = "HElloWorld!";
+        String s = "HelloWorld!";
         return s;
     }
 }
