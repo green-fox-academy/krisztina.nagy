@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="Sign-Up-Style.css">
+</head>
+<body>
+    <form action="https://newsletter-ws.herokuapp.com/register" method="post">
+        <div class="column">
+            <fieldset id="input-v1">
+                <legend style="font-size:20px;">SIGN UP</legend>
+
+                <div><label for="name">USERNAME</label></div>
+                <div>
+                    <input type="text" id="name" name="name" autofocus required>
+                </div>
+                <br>
+                <div><label for="email">E-mail</label></div>
+                <div>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <br>
+                <div><label for="password">PASSWORD</label></div>
+                <div>
+                    <input id="password" type="password" class="form-control" name="password" required>
+                </div>
+                <br>
+                <div><label for="passwordConfirmation">PASSWORD</label></div>
+                <div>
+                    <input id="passwordConfirmation" type="password" class="form-control" name="passwordConfirmation" required>
+                </div>
+                <br>
+                <br>
+                <div class="button">
+                    <button type="submit">SIGN ME UP</button>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="column">
+            <div class="shape">
+                OR
+            </div>
+
+        </div>
+
+        <div class="column">
+            <fieldset id="input-v2"></fieldset>
+        </div>
+
+    </form>
+
+</body>
+</html>

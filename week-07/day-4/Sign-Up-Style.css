@@ -1,0 +1,66 @@
+﻿body
+{
+}
+
+form {
+    display: inline-block;
+    padding: 15px;
+    border-radius: 3px;
+    font-family: Calibri;
+    background-color: ghostwhite;
+    margin: 0 auto;
+    
+    /*height:350px;*/
+    
+}
+
+.column {
+        //float: left;
+    display: inline-block;
+    width: 33%;
+    height:100%;
+    
+}
+
+.shape {
+    border-radius: 50%;
+    text-align: center;
+    background: lightgrey 30px;
+    background-size: 30px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    display: inline-block;
+    
+}
+
+fieldset{
+    padding:15px;
+    font-size:14px;
+    border:none;
+    /*width:200px;*/
+}
+
+
+
+input {
+    border: 0.5px solid lightgrey;
+    border-radius: 3px;
+    width:150px;
+}
+
+    input:focus {
+        outline: 1px solid grey;
+        border: 0.5px solid lightgreen;
+    }
+
+button {
+    height: 40px;
+    width: 100px;
+    font-size: 10px;
+    background-color: lightseagreen;
+    border-radius: 3px;
+    border: none;
+    color: ghostwhite;
+}
+
