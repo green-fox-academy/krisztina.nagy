@@ -1,0 +1,32 @@
+﻿body {
+}
+
+form {
+    background-color: ghostwhite;
+    margin: 0 auto;
+    vertical-align: central;
+    width: 250px;
+}
+
+input {
+    border:0.5px solid lightgrey;
+    border-radius:3px;
+    
+
+}
+input:focus {
+    outline: 1px solid grey;  
+    border: 0.5px solid lightgreen;
+    
+    
+}
+
+button {
+    height:25px;    
+    width:50px;
+    font-size:10px;
+    background-color: black;
+    border-radius:15px;
+    border:none;
+    color: ghostwhite;
+}

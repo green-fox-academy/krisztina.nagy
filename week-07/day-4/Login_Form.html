@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" style="background-color:lightgrey">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="Login_Style.css">
+</head>
+<body>
+    <form action="/my-login-form" method="post" style="padding:25px; border-radius:3px; font-family:Calibri;">
+        <fieldset style="padding:25px;font-size:14px;border:none;width:200px;">
+            <legend style="font-size:20px;">ACCOUNT LOGIN</legend>
+            
+            <div><label>USERNAME</label></div>
+            <div>
+                <input type="text" id="username" name="user_name" style="margin-top:3px; width:200px;" autofocus>
+            </div>
+            <br>
+            <div><label>PASSWORD</label></div>
+            <div>
+                <input id="password-field" type="password" class="form-control" name="password" style="margin-top:3px;width:200px;">               
+            </div>
+            <div style="font-size:8px; text-align:right">
+                Forgot Password?
+            </div>
+            <br>
+            <div class="button">
+                <button type="submit">Login</button>
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
