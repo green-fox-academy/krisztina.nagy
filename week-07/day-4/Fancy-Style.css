@@ -1,0 +1,46 @@
+﻿
+
+body {
+}
+    table{
+       
+       border-collapse: collapse;
+       border-radius: 5px;
+       overflow:hidden;
+    }
+
+    
+
+    th {
+        background-color: darkslategrey;
+        border-bottom:4px solid grey;
+        border-left:2px solid grey;
+    }
+
+    th:first-child {
+        border-left: none;
+    }
+
+    tr:nth-child(even) {
+        background-color: lightgray;
+    }
+
+    tr:nth-child(2n+1) {
+        background-color: ghostwhite;
+    }
+
+    td {
+        border-top: 2px solid grey;
+        border-left: 2px solid grey;
+    }
+    td:first-child {
+        border-left: none;
+    }
+
+    /*table:last-child {
+        border-bottom: none;
+    }*/
+
+
+
+  
