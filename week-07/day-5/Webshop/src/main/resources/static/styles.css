@@ -10,10 +10,16 @@ h1{
 
 a {
     color: ghostwhite;
+    text-transform: uppercase;
     text-decoration: none;
     background-color: coral;
-    padding: 0.7em 3em;
+    padding: 0.7em 2em;
     border-radius: 10px;
     border: none;
     margin: 5pt;
+}
+
+th {
+    background-color: cyan;
+    padding: 1em 3em;
 }
