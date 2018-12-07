@@ -2,10 +2,17 @@ package com.greenfoxacademy.webshop.models;
 
 public class Item {
 
-    String name;
-    String description;
-    Float price;
-    Integer quantityInStock;
+
+
+    private int id;
+    private String name;
+    private String description;
+    private Double price;
+    public Integer quantity;
+
+    public int getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
@@ -23,26 +30,27 @@ public class Item {
         this.description = description;
     }
 
-    public Float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public Integer getQuantityInStock() {
-        return quantityInStock;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setQuantityInStock(Integer quantityInStock) {
-        this.quantityInStock = quantityInStock;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public Item(String name, String description, Float price, Integer quantityInStock) {
+    public Item(int id, String name, String description, Double price, Integer quantity) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.quantityInStock = quantityInStock;
+        this.quantity = quantity;
     }
 }
