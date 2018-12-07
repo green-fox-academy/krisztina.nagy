@@ -1,0 +1,19 @@
+h1{
+    text-align: left;
+    color: cyan;
+    display: block;
+    border-bottom: 1pt solid cyan;
+
+    font-size: 36pt;
+    font-family: 'Raleway', sans-serif;
+}
+
+a {
+    color: ghostwhite;
+    text-decoration: none;
+    background-color: coral;
+    padding: 0.7em 3em;
+    border-radius: 10px;
+    border: none;
+    margin: 5pt;
+}

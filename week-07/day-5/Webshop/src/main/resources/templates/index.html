@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>MyShop</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+<h1>My Shop</h1>
+
+<a id="ava" href="/filter?Quantity>0">Only available</a>
+<a id="che" href="/filter?sortBy=price>0">Cheapest first</a>
+<a id="nike" href="/filter?*nike*">Contains Nike</a>
+<a id="avst" href="">Only available</a>
+<a id="mostex" href="">Average stock</a>
+<br>
+<br>
+<br>
+<form action="/search" method="post">
+<label for=searchbar>Search for:</label><br>
+<input type="text" id="searchbar" placeholder="...something like nike"><button type="submit">Search</button><br>
+</form>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity of stock</th>
+    </tr>
+    <tr>
+        <td>dummy data</td>
+        <td>awesome dummy</td>
+        <td>muchalot</td>
+        <td>12</td>
+
+    </tr>
+</table>
+
 
 </body>
 </html>
