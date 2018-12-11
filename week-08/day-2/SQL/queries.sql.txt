@@ -1,0 +1,45 @@
+Task1:
+Q1: SELECT title FROM Movie WHERE director = "Steven Spielberg";
+
+Q2: 
+SELECT DISTINCT year FROM movie INNER JOIN Rating ON Movie.mID = Rating.mID WHERE stars BETWEEN 4 AND 5 ORDER BY year ASC;
+
+Q3: SELECT title FROM movie LEFT JOIN Rating ON movie.mID = rating.mID WHERE stars IS NULL;
+
+Q4: SELECT name FROM reviewer LEFT JOIN rating ON reviewer.rID = rating.rID WHERE ratingDate IS NULL;
+
+Q5: 
+SELECT name, title, stars, ratingDate FROM reviewer 
+JOIN rating ON reviewer.rID = rating.rID
+JOIN movie ON rating.mID = movie.mID
+ORDER BY name ASC, title ASC, stars ASC;
+
+Task1 Extra:
+Q1: 
+SELECT DISTINCT name FROM reviewer 
+JOIN rating ON reviewer.rID = rating.rID 
+JOIN movie ON rating.mID = movie.mID
+WHERE title LIKE "gone with the wind"
+
+Q2:
+SELECT name, title, stars FROM reviewer 
+JOIN rating ON reviewer.rID = rating.rID
+JOIN movie ON rating.mID = movie.mID
+WHERE name = director
+
+
+Task2:
+
+CREATE DATABASE TodoApp;
+CREATE TABLE apprentice (
+aID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+firstname VARCHAR(255) NOT NULL, 
+lastname VARCHAR(255) NOT NULL
+);
+CREATE TABLE task(
+tID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+Task_name VARCHAR(255) NOT NULL, Deadline DATETIME, Done BOOLEAN DEFAULT VALUE 0
+);
+CREATE TABLE taskowner (
+aID INTEGER FOREIGN KEY, tID INTEGER FOREIGN KEY
+);
