@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Accounts Table</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <td>Index</td>
+            <td>Status</td>
+            <td>Owner name (type)</td>
+            <td>Cash amt</td>
+            <td>Currency</td>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <tr th:each="account : ${accounts}">
+                <td th:text="${accountStat.index}"></td>
+                <td th:if="${account.getKing()}" th:text="${account.getRank()}" style="color:magenta"></td>
+                <td th:unless="${account.getKing()}" th:text="${account.getRank()}"></td>
+                <td th:text="${account.getName()} + ' (' + ${account.getAnimalType()} + ')'"></td>
+                <td th:text="${#numbers.formatDecimal(account.getBalance(), 3,2,'COMMA')}"></td>
+                <td th:text="${account.getCurrency()}"></td>
+
+            </tr>
+
+
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

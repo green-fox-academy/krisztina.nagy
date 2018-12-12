@@ -1,18 +1,40 @@
 package com.greenfoxacademy.simba.Model;
 
+import java.util.Random;
+
 public class BankAccount {
-    public String name;
-    public Integer balance;
-    public String animalType;
-    public String currency;
+    String name;
+    Integer balance;
+    String animalType;
+    String currency;
+    boolean isKing;
+    String rank;
 
+    protected String isKing() {
+        Random r = new Random();
+        this.isKing = r.nextBoolean();
 
+        if (isKing){
+            return "King!";
+        }
+        else{
+            return "Subject...";
+        }
+    }
     public BankAccount(String name, Integer balance, String animalType, String currency) {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
         this.currency = currency;
+        this.rank = this.isKing();
+    }
 
+    public boolean getKing() {
+        return isKing;
+    }
+
+    public String getRank() {
+        return rank;
     }
 
     public String getCurrency() {
