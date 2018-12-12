@@ -9,9 +9,10 @@ public class BankAccount {
     String currency;
     boolean isKing;
     String rank;
+    boolean isGoodGuy;
+    Random r = new Random();
 
     protected String isKing() {
-        Random r = new Random();
         this.isKing = r.nextBoolean();
 
         if (isKing){
@@ -21,14 +22,19 @@ public class BankAccount {
             return "Subject...";
         }
     }
+
     public BankAccount(String name, Integer balance, String animalType, String currency) {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
         this.currency = currency;
         this.rank = this.isKing();
+        this.isGoodGuy= r.nextBoolean();
     }
 
+    public boolean isGoodGuy() {
+        return isGoodGuy;
+    }
     public boolean getKing() {
         return isKing;
     }
