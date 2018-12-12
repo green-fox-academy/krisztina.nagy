@@ -23,6 +23,16 @@ public class BankAccount {
         }
     }
 
+    public void getCash () {
+        if (this.isKing){
+                balance+=100;
+            }
+        else{
+                balance+=10;
+            }
+
+    }
+
     public BankAccount(String name, Integer balance, String animalType, String currency) {
         this.name = name;
         this.balance = balance;

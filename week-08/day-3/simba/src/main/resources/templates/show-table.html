@@ -24,13 +24,18 @@
                 <td th:if="${account.getKing()}" th:text="${account.getRank()}" style="color:magenta"></td>
                 <td th:unless="${account.getKing()}" th:text="${account.getRank()}"></td>
                 <td th:switch="${account.isGoodGuy()}">
-                    <span th:case="true">Good guy</span>
+                    <span th:case="true">Good one</span>
                     <span th:case="false">Bad guy</span>
                     <span th:case="*">(just sort of an error)</span>
                 </td>
                 <td th:text="${account.getName()} + ' (' + ${account.getAnimalType()} + ')'"></td>
                 <td th:text="${#numbers.formatDecimal(account.getBalance(), 3,2,'COMMA')}"></td>
                 <td th:text="${account.getCurrency()}"></td>
+                <td>
+                    <form th:action="@{/get-cash}" method="post">
+                        <button type="submit" th:value="${accountStat.index}" name="id">Instant Funds! D: D:</button>
+                    </form>
+                </td>
 
             </tr>
 
@@ -38,6 +43,11 @@
         </tbody>
     </table>
 
+
+    <form action = "/add-account">
+        <input type="text" name="name" />
+        <input type="submit" value = "Add account <3" />
+    </form>
 </div>
 
 </body>

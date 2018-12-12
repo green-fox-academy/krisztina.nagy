@@ -4,6 +4,7 @@ import com.greenfoxacademy.simba.Model.BankAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,5 +40,11 @@ public class accountController {
     public String showTable (Model model) {
         model.addAttribute("accounts", accounts);
         return "show-table";
+    }
+
+    @PostMapping ("/get-cash")
+    public String deusExCash (String id) {
+        accounts.get(Integer.parseInt(id)).getCash();
+      return "redirect:/show-table";
     }
 }
