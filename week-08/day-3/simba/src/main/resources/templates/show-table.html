@@ -12,9 +12,11 @@
         <tr>
             <td>Index</td>
             <td>Status</td>
+            <td>Who dat</td>
             <td>Owner name (type)</td>
             <td>Cash amt</td>
             <td>Currency</td>
+            <td>Deus Ex Cash</td>
         </tr>
         </thead>
         <tbody>
@@ -32,7 +34,7 @@
                 <td th:text="${#numbers.formatDecimal(account.getBalance(), 3,2,'COMMA')}"></td>
                 <td th:text="${account.getCurrency()}"></td>
                 <td>
-                    <form th:action="@{/get-cash}" method="post">
+                    <form action="/get-cash" method="post">
                         <button type="submit" th:value="${accountStat.index}" name="id">Instant Funds! D: D:</button>
                     </form>
                 </td>
@@ -44,10 +46,15 @@
     </table>
 
 
-    <form action = "/add-account">
-        <input type="text" name="name" />
-        <input type="submit" value = "Add account <3" />
+    <form method="post" action = "/add-account" id="newAccount">
+        <input type="text" name="name" placeholder="Name:" required/>
+        <input type="text" name="type" placeholder="Type:" required/>
+        <input type="number" name="balance" placeholder="Balance:" required/>
+        <input type="text" name="currency" placeholder="Currency:" required/>
+
+        <input type="submit" value = "Add account &lt;3" form="newAccount"/>
     </form>
+
 </div>
 
 </body>

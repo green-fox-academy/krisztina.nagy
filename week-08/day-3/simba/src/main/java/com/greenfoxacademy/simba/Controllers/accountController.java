@@ -1,10 +1,13 @@
 package com.greenfoxacademy.simba.Controllers;
 
 import com.greenfoxacademy.simba.Model.BankAccount;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,5 +49,17 @@ public class accountController {
     public String deusExCash (String id) {
         accounts.get(Integer.parseInt(id)).getCash();
       return "redirect:/show-table";
+    }
+
+    @PostMapping (value = "/add-account", consumes= MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String addAccount(@RequestBody MultiValueMap<String, String> formData){
+    BankAccount newAccount = new BankAccount (
+            formData.toSingleValueMap().get("name"),
+            Integer.parseInt(formData.toSingleValueMap().get("balance")),
+            formData.toSingleValueMap().get("type"),
+                    formData.toSingleValueMap().get("currency")
+            );
+    this.accounts.add(newAccount);
+    return "redirect:/show-table";
     }
 }
