@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Accounts</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+<div>
+    <div th:each="account : ${accounts}" >
+        <h1 th:text="${account.getName()} + ' (' + ${account.getAnimalType()} + ') ' + ' - ' +${#numbers.formatDecimal(account.getBalance(), 3,2,'COMMA')} + ' ' +${account.getCurrency()}"></h1>
+
+    </div>
+</div>
+
+</body>
+</html>
