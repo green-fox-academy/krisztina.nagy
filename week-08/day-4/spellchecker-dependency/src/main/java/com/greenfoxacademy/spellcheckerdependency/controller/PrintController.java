@@ -34,7 +34,7 @@ public class PrintController {
     //}
 
     @GetMapping("/useful/email")
-    public String filterProducts(Model model, @RequestParam String email) {
+    public String validateEmail(Model model, @RequestParam String email) {
 
         model.addAttribute("email", email);
         model.addAttribute("valid", util.validateEmail(email));
@@ -42,6 +42,18 @@ public class PrintController {
         //        .stream()
         //        .filter(product -> product.qty > qty)
         //        .collect(Collectors.toList()));
+        return "index";
+    }
+
+    @GetMapping("/useful/caesar-encode")
+    public String cEncode (Model model, @RequestParam String text, @RequestParam int number){
+        model.addAttribute("encoded", util.caesar(text, number));
+        return "index";
+    }
+
+    @GetMapping("/useful/caesar-decode")
+    public String cDecode (Model model, @RequestParam String text, @RequestParam int number){
+        model.addAttribute("decoded", util.caesar(text, -number));
         return "index";
     }
 }

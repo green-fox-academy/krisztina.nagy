@@ -6,15 +6,23 @@
 
 <body >
 
-<a id="add-colour" href="/useful/add-colour" />Add new colour<br>
-<a id="random-background" href="/useful/colored" />Randomize background colour<br>
-<a id="email-validation" href="/useful/email?email=is@this.valid"/>Validate email (e.g.: /useful/email?email=is@this.valid)<br>
-<a id="caesar-en" href="/useful/caesar-encode" />Caesar Encoder<br>
-<a id="caesar-de" href="/useful/caesar-decode" />Caesar Decoder<br>
-
+<a id="add-colour" href="/useful/add-colour">Add new colour</a><br>
+<a id="random-background" href="/useful/colored">Randomize background colour</a><br>
+<a id="email-validation" href="/useful/email?email=is@this.valid">Validate email (e.g.: /useful/email?email=is@this.valid)</a>a<br>
+<a id="caesar-en" href="/useful/caesar-encode?text=sampletext&number=12">Caesar Encoder</a><br>
+<a id="caesar-de" href="/useful/caesar-decode?text=emybxqfqjf&number=12">Caesar Decoder</a><br>
+<br>
 <div action="/useful/email">
     <span th:if="${valid}" th:text="${email} + ' is a valid e-mail address'" style="color:green"></span>
     <span th:unless="${valid}" th:text="${email} + ' is not a valid e-mail address'" style="color:red"></span>
+</div>
+<br>
+<div action="/useful/caesar-encode">
+    <span th:text="${encoded}" />
+</div>
+
+<div action="/useful/caesar-decode">
+    <span th:text="${decoded}" />
 </div>
 
 </body>
