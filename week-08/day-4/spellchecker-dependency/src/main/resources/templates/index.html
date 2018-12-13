@@ -12,16 +12,16 @@
 <a id="caesar-en" href="/useful/caesar-encode?text=sampletext&number=12">Caesar Encoder</a><br>
 <a id="caesar-de" href="/useful/caesar-decode?text=emybxqfqjf&number=12">Caesar Decoder</a><br>
 <br>
-<div action="/useful/email">
+<div th:if="${valid}!=null">
     <span th:if="${valid}" th:text="${email} + ' is a valid e-mail address'" style="color:green"></span>
     <span th:unless="${valid}" th:text="${email} + ' is not a valid e-mail address'" style="color:red"></span>
 </div>
 <br>
-<div action="/useful/caesar-encode">
+<div th:if="${encoded}!=null">
     <span th:text="${encoded}" />
 </div>
 
-<div action="/useful/caesar-decode">
+<div th:if="${decoded}!=null">
     <span th:text="${decoded}" />
 </div>
 
