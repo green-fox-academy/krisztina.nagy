@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Epic Login page</title>
+</head>
+<body>
+<div>
+    <h1>Welcome to the Aye-Aye appreciation group, mate!</h1>
+    <br>
+    <p>Please provide a name, so you can associate it to your pet!</p><br>
+    <form method="post" action="login" id="create-pet">
+        <label>Name <input name="name" type="text" required/></label>
+        <label>Image URL <input name="img-url" type="text" required/></label>
+        <input type="submit" value="GO" form="create-pet"/>
+    </form>
+
+</div>
+
+</body>
+</html>
