@@ -6,8 +6,6 @@ import java.util.List;
 public class Aye {
 
     String name;
-
-
     String imgPath;
     List<String>tricks = new ArrayList<>();
 
@@ -34,6 +32,7 @@ public class Aye {
         this.name = name;
         this.imgPath = imgPath;
     }
+
 
 
 
