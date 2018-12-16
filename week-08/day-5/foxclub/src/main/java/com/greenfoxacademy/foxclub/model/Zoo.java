@@ -1,5 +1,6 @@
 package com.greenfoxacademy.foxclub.model;
 
+import com.greenfoxacademy.foxclub.exceptions.NameAlreadyExistsException;
 import com.greenfoxacademy.foxclub.repository.ZooAyes;
 import org.springframework.stereotype.Service;
 
@@ -24,16 +25,16 @@ public class Zoo {
         return null;
     }
 
-    public void addAye(Aye newa){
-        boolean isInZoo=false;
+    public void addAye(Aye newa) throws NameAlreadyExistsException {
+
         for (Aye a:ZooAyes.getInstance().getZooAyes()) {
             if (a.getName().equals(newa.getName())){
-                isInZoo = true;
-                //itt el kell intézni, mi legyen, ha mér van ilyen állat.
+
+                throw new NameAlreadyExistsException(newa.getName());
             }
-            if (!isInZoo){
-                ZooAyes.getInstance().addAye(newa);
-            }
+
+            ZooAyes.getInstance().addAye(newa);
+
         }
 }
 }

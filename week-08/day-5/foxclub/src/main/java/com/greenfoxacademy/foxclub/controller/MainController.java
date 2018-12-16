@@ -1,5 +1,6 @@
 package com.greenfoxacademy.foxclub.controller;
 
+import com.greenfoxacademy.foxclub.exceptions.NameAlreadyExistsException;
 import com.greenfoxacademy.foxclub.model.Aye;
 import com.greenfoxacademy.foxclub.model.Zoo;
 import com.greenfoxacademy.foxclub.repository.ZooAyes;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainController {
 
     private Zoo zoo;
-    String actualPet;
 
     @Autowired
     public MainController(Zoo zoo) {
@@ -39,7 +39,12 @@ public class MainController {
                 formData.toSingleValueMap().get("name"),
                 formData.toSingleValueMap().get("url")
         );
-        zoo.addAye(newAye);
+        try {
+            zoo.addAye(newAye);
+        } catch (NameAlreadyExistsException e) {
+            e.printStackTrace();
+            return "redirect:/login";
+        }
         return "redirect:/?name=" + newAye.getName();
     }
 
