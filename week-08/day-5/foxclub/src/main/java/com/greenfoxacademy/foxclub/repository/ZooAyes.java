@@ -17,7 +17,8 @@ public class ZooAyes {
 
     private ZooAyes(){
         this.zooAyes =new ArrayList();
-        this.zooAyes.add(new Aye("AyeCaptain", "http://drive.google.com/uc?export=view&id=1Mue8_sGbSyQ9VH-gmv5eb_H6wnGf_Rd6"));
+        //this.zooAyes.add(new Aye("AyeCaptain", "http://drive.google.com/uc?export=view&id=1Mue8_sGbSyQ9VH-gmv5eb_H6wnGf_Rd6"));
+
     }
 
     private static ZooAyes instance;

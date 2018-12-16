@@ -12,13 +12,14 @@ public class Zoo {
     public Zoo() {
 
     }
-    public ArrayList<Aye> getAyes(){
+
+    public ArrayList<Aye> getAyes() {
         return ZooAyes.getInstance().getZooAyes();
     }
 
-    public Aye getAye (String name){
+    public Aye getAye(String name) {
         for (Aye a : ZooAyes.getInstance().getZooAyes()) {
-            if (a.getName().equals(name)){
+            if (a.getName().equals(name)) {
                 return a;
             }
         }
@@ -27,14 +28,11 @@ public class Zoo {
 
     public void addAye(Aye newa) throws NameAlreadyExistsException {
 
-        for (Aye a:ZooAyes.getInstance().getZooAyes()) {
-            if (a.getName().equals(newa.getName())){
-
+        for (Aye a : ZooAyes.getInstance().getZooAyes()) {
+            if (a.getName().equals(newa.getName())) {
                 throw new NameAlreadyExistsException(newa.getName());
             }
-
-            ZooAyes.getInstance().addAye(newa);
-
         }
-}
+        ZooAyes.getInstance().addAye(newa);
+    }
 }

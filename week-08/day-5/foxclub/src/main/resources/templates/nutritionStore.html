@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Aye-Aye nutrition store</title>
+</head>
+<body>
+<ul>
+    <li><a th:href="'/?name=' + ${aye.getName()}">Information</a></li>
+    <li><a th:href="'/nutritionStore?name=' + ${aye.getName()}">Nutrition store</a></li>
+    <li><a th:href="'/trickCenter?name=' + ${aye.getName()}">Trick center</a></li>
+    <li><a th:href="'/actionHistory?name=' + ${aye.getName()}">Action history</a></li>
+</ul>
+
+<form method="post" action="nutritionStore" id="nut-store">
+    <input type="hidden" name="pet-name" th:value="${aye.getName()}"/>
+    <label for="foods">Food</label>
+    <select id="foods" name="food">
+        <option th:each="food : ${T(com.greenfoxacademy.foxclub.model.Aye.Food).values()}" th:text="${food.toString()} " th:value="${food.toString()}"></option>
+    </select>
+
+    <label for="drinks">Drink</label>
+    <select id="drinks" name="drink">
+        <option th:each="drink : ${T(com.greenfoxacademy.foxclub.model.Aye.Drink).values()}" th:text="${drink.toString()}" th:value="${drink.toString()}"></option>
+    </select>
+    <input type="submit" value="Change" form="nut-store"/>
+</form>

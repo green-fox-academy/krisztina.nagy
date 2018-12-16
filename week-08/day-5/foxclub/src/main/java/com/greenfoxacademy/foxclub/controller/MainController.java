@@ -22,6 +22,15 @@ public class MainController {
     @Autowired
     public MainController(Zoo zoo) {
         this.zoo = zoo;
+        try {
+            zoo.addAye(new Aye("AyeCaptain", "http://drive.google.com/uc?export=view&id=1Mue8_sGbSyQ9VH-gmv5eb_H6wnGf_Rd6"));
+        } catch (NameAlreadyExistsException e) {
+            e.printStackTrace();
+        }
+
+        zoo.getAye("AyeCaptain").getTricks().add("Stare");
+
+
     }
 
     @GetMapping("/login")
@@ -37,7 +46,7 @@ public class MainController {
 
         Aye newAye = new Aye(
                 formData.toSingleValueMap().get("name"),
-                formData.toSingleValueMap().get("url")
+                formData.toSingleValueMap().get("img-url")
         );
         try {
             zoo.addAye(newAye);
@@ -51,10 +60,32 @@ public class MainController {
     @GetMapping("/")
     public String index(Model model, @RequestParam(required = false) String name) {
         System.out.println(this.zoo.getAyes().size());
+        System.out.println(this.zoo.getAye(name));
         if (name != null && zoo.getAye(name) != null) {
-            model.addAttribute("animals", zoo);
+            model.addAttribute("aye", zoo.getAye(name));
             return "index";
-        } else return "redirect:/login";
+        }
+        else return "redirect:/login";
+    }
+
+    @GetMapping ("/nutritionStore")
+    public String nutritionStore (Model model, @RequestParam String name) {
+        if (name != null && zoo.getAye(name) != null) {
+            model.addAttribute("aye", zoo.getAye(name));
+            return "nutritionStore";
+        }
+        else return "redirect:/login";
+    }
+
+    @PostMapping (value = "/nutritionStore",
+                consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String changeNutrition (@RequestBody MultiValueMap<String, String> formData) {
+
+        Aye particularAye = zoo.getAye(formData.toSingleValueMap().get("pet-name"));
+
+        particularAye.setFood(Aye.Food.fromString(formData.toSingleValueMap().get("food")));
+        particularAye.setDrink(Aye.Drink.fromString(formData.toSingleValueMap().get("drink")));
+        return "redirect:/?name=" + particularAye.getName();
     }
 
 }
