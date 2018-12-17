@@ -4,11 +4,11 @@ import com.greenfoxacademy.databases.model.Todo;
 import com.greenfoxacademy.databases.repository.TodoRepository;
 import com.greenfoxacademy.databases.repository.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +46,19 @@ public class TodoController {
         }
         return "todolist";
 
+    }
+
+    @GetMapping ("/todo/add")
+    public String newTodo (){
+        return "addtodo";
+    }
+
+    @PostMapping (value = "/todo/add",
+            consumes= MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String addTodo (@RequestBody MultiValueMap<String, String> formData){
+        Todo newTodo = new Todo(formData.toSingleValueMap().get("new-todo"));
+        this.todoSvc.addTodo(newTodo);
+        return "redirect:/todo";
     }
 }
 
