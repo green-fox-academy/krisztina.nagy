@@ -20,9 +20,8 @@ public class Todo {
 
     }
 
-    public Todo(long id, String title) {
+    public Todo(String title) {
 
-        this.id = id;
         this.title = title;
         this.urgent = false;
         this.done = false;
