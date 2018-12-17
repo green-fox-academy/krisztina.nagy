@@ -4,6 +4,9 @@ import com.greenfoxacademy.databases.model.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class TodoService {
 
@@ -18,6 +21,13 @@ public class TodoService {
         if (todo !=null) {
             this.repository.save(todo);
         }
+    }
+
+    public List<Todo> getAll() {
+        List<Todo> todos = new ArrayList<>();
+        repository.findAll().forEach(todos::add);
+        //repository.findAll().forEach(todo -> todos.add(todo));
+        return todos;
     }
 
 }
