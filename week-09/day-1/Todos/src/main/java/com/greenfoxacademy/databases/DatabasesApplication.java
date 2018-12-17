@@ -20,8 +20,8 @@ public class DatabasesApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Todo newTodo = new Todo(0, "I have to learn Object Relational Mapping");
-        service.addTodo(newTodo);
+        //Todo newTodo = new Todo(0, "I have to learn Object Relational Mapping");
+        //service.addTodo(newTodo);
     }
 }
 
