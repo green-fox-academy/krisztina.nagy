@@ -63,7 +63,6 @@ public class TodoController {
 
     @GetMapping ("/{id}/delete")
     public String deleteTodo (@PathVariable long id) {
-
     todoSvc.deleteTodo(todoSvc.getAll().stream()
     .filter(todo -> todo.getId()==id)
     .findAny()
@@ -74,5 +73,17 @@ public class TodoController {
     return "redirect:/todo";
 
     }
+
+    @PostMapping ("/{id}/edit")
+    public String editTodo (@PathVariable long id) {
+
+    }
+
+    @GetMapping ("/{id}/edit")
+    public String updateTodo (@PathVariable long id) {
+
+        return "redirect:/todo";
+    }
+
 }
 
