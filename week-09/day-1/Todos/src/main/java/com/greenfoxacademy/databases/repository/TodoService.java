@@ -32,7 +32,6 @@ public class TodoService {
 
     public void deleteTodo (Todo todo) {
         this.repository.delete(todo);
-
     }
 
     public void deleteTodoById (long id){

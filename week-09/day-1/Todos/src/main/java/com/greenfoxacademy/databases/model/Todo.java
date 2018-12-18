@@ -13,6 +13,7 @@ public class Todo {
     @GeneratedValue
     long id;
 
+
     private String title;
     private boolean urgent;
     private boolean done;
@@ -26,6 +27,10 @@ public class Todo {
         this.title = title;
         this.urgent = false;
         this.done = false;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setId(long id) {
