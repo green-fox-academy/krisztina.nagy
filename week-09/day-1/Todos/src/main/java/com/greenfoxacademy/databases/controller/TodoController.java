@@ -60,6 +60,19 @@ public class TodoController {
         this.todoSvc.addTodo(newTodo);
         return "redirect:/todo";
     }
-}
 
+    @GetMapping ("/{id}/delete")
+    public String deleteTodo (@PathVariable long id) {
+
+    todoSvc.deleteTodo(todoSvc.getAll().stream()
+    .filter(todo -> todo.getId()==id)
+    .findAny()
+    .orElse(null));
+
+    // todoSvc.deleteTodoById(id);
+
+    return "redirect:/todo";
+
+    }
+}
 

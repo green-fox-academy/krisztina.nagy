@@ -14,6 +14,7 @@
         <th>Action</th>
         <th>Done</th>
         <th>Urgent</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -23,6 +24,7 @@
         <td th:text="${todo.getTitle()}"></td>
         <td th:text="${todo.isDone()}"></td>
         <td th:text="${todo.isUrgent()}"></td>
+        <td> <a th:href="'/' + ${todo.getId()} + '/delete'">XXX</a></td>
     </tr>
     </tbody>
 </table>

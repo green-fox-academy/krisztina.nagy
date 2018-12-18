@@ -30,4 +30,13 @@ public class TodoService {
         return todos;
     }
 
+    public void deleteTodo (Todo todo) {
+        this.repository.delete(todo);
+
+    }
+
+    public void deleteTodoById (long id){
+        this.repository.deleteById(id);
+    }
+
 }
