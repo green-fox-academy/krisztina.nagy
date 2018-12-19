@@ -1,9 +1,6 @@
 package com.greenfoxacademy.databases.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Todo {
@@ -17,6 +14,13 @@ public class Todo {
     private String title;
     private boolean urgent;
     private boolean done;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "aid", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Post post;
+
 
     public Todo () {
 
