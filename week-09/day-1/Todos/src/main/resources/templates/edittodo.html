@@ -6,9 +6,9 @@
 </head>
 <body>
 <h1>Edit Selected Todo</h1>
-<form method="post" th:action="'/' + ${todo.getId()} + '/edit'" id="edit-todo">
+<form method="post" th:action="'/' + ${todo.getId()} + '/edit'" id="edit-todo" >
     <input type="hidden" name="id" th:value="${todo.getId()}"/>
-    <label>Title<input name="edit-name" type="text" th:placeholder="${todo.getTitle()}"/></label>
+    <label>Title<input name="edit-name" type="text" th:value="${todo.getTitle()}"/></label>
     <label>Urgent<input name="edit-urgent" type="checkbox" th:checked="${todo.isUrgent()}"/></label>
     <label>Done<input name="edit-done" type="checkbox" th:checked="${todo.isDone()}"/></label>
     <input type="submit" value="Submit" form="edit-todo"/>

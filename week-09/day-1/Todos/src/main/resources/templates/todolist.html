@@ -6,6 +6,12 @@
 </head>
 <body>
 <h1>Todos for today</h1>
+
+<form method="post" action="/todo/search" id="filter-todo">
+    <input name="title" type="text" placeholder="Find by title"/>
+    <button>Search</button>
+</form>
+
 <a href="/todo/add">Add new todo</a>
 <table>
     <thead>

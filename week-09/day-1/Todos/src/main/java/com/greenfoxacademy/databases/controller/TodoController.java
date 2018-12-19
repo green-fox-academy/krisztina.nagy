@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -74,40 +75,20 @@ public class TodoController {
     }
 
     @PostMapping (value = "/{id}/edit",
-            consumes= MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String editTodo (@RequestBody MultiValueMap<String, String> formData, @PathVariable long id) {
-        todoSvc.getAll().stream()
-                .filter(todo -> todo.getId()==id)
-                .findAny()
-                .orElse(null).setTitle(formData.toSingleValueMap().get("edit-name"));
 
-        if (formData.toSingleValueMap().get("edit-urgent").equals("on")) {
-            todoSvc.getAll().stream()
-                    .filter(todo -> todo.getId() == id)
-                    .findAny()
-                    .orElse(null).setUrgent(true);
-        }
-        else {todoSvc.getAll().stream()
-                .filter(todo -> todo.getId() == id)
-                .findAny()
-                .orElse(null).setUrgent(false);
+        Todo todo = todoSvc.getAll().stream()
+                .filter(tdo -> tdo.getId() == id)
+                .findAny().get();
+        todo.setTitle(formData.toSingleValueMap().get("edit-name"));
 
-        }
+        todo.setUrgent("on".equals(formData.toSingleValueMap().get("edit-urgent")));
 
-        if (formData.toSingleValueMap().get("edit-done").equals("on")) {
-            todoSvc.getAll().stream()
-                    .filter(todo -> todo.getId() == id)
-                    .findAny()
-                    .orElse(null).setDone(true);
-        }
-        else {todoSvc.getAll().stream()
-                .filter(todo -> todo.getId() == id)
-                .findAny()
-                .orElse(null).setDone(false);
+        todo.setDone("on".equals(formData.toSingleValueMap().get("edit-done")));
 
-        }
-
-        //ugyanezt a hidden ID mezővel is lehetne keresni... melyik jobb?
+        todoSvc.addTodo(todo);
+        //ezeket át kell tenni a service-be
 
         return "redirect:/todo";
     }
@@ -122,6 +103,13 @@ public class TodoController {
 
         return "edittodo";
     }
+
+    @PostMapping ("/todo/search")
+    public String filterTodosByTitle (String title, Model model) {
+        model.addAttribute("todos", todoSvc.searchByTitle(title));
+        return "todolist";
+    }
+
 
 }
 

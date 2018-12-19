@@ -34,6 +34,10 @@ public class TodoService {
         this.repository.delete(todo);
     }
 
+    public List<Todo> searchByTitle (String searchterm) {
+        return this.repository.findTodosByTitleContaining(searchterm);
+    }
+
     public void deleteTodoById (long id){
         this.repository.deleteById(id);
     }
