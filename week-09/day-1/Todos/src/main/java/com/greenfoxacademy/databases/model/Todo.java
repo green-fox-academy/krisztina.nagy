@@ -27,22 +27,25 @@ public class Todo {
         this.assignee = assignee;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id", insertable=false, updatable=false, nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "assignee")
+    //@OnDelete(action = OnDeleteAction.CASCADE)
+    //@JsonIgnore
     private Assignee assignee;
 
 
     public Todo () {
-
+        this.title = "untitled";
+        this.urgent = false;
+        this.done = false;
+        this.assignee = null;
     }
 
     public Todo(String title) {
-
         this.title = title;
         this.urgent = false;
         this.done = false;
+        this.assignee = null;
     }
 
     public void setTitle(String title) {

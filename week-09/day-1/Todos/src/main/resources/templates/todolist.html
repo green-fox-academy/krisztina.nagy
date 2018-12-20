@@ -22,6 +22,7 @@
         <th>Urgent</th>
         <th>Delete</th>
         <th>Edit</th>
+        <th>Assignee</th>
     </tr>
     </thead>
     <tbody>
@@ -33,6 +34,7 @@
         <td th:text="${todo.isUrgent()}"></td>
         <td> <a th:href="'/' + ${todo.getId()} + '/delete'">XXX</a></td>
         <td> <a th:href="'/' + ${todo.getId()} + '/edit'">[]</a></td>
+        <td th:text="${todo.assignee?.name}"></td>
     </tr>
     </tbody>
 </table>

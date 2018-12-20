@@ -12,8 +12,8 @@
     <label>Urgent<input th:field="*{urgent}" type="checkbox" th:checked="*{urgent}"/></label>
     <label>Done<input th:field="*{done}" type="checkbox" th:checked="*{done}"/></label>
     <label>Assignee
-        <select th:field="*{assignee}">
-            <option th:each="assignee : ${assignees}" th:text="${assignee.name}" th:value="${assignee}"></option>
+        <select name="assigneeid">
+            <option th:each="assignee : ${assignees}" th:text="${assignee.name}" th:value="${assignee.id}"></option>
         </select>
     </label>
     <button>Update</button>
