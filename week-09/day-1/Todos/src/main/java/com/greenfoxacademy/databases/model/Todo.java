@@ -1,5 +1,9 @@
 package com.greenfoxacademy.databases.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,11 +19,19 @@ public class Todo {
     private boolean urgent;
     private boolean done;
 
+    public Assignee getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(Assignee assignee) {
+        this.assignee = assignee;
+    }
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "aid", nullable = false)
+    @JoinColumn(name = "id", insertable=false, updatable=false, nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Post post;
+    private Assignee assignee;
 
 
     public Todo () {

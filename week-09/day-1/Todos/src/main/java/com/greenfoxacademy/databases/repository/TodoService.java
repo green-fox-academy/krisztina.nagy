@@ -38,6 +38,10 @@ public class TodoService {
         return this.repository.findTodosByTitleContaining(searchterm);
     }
 
+    public Todo getTodoById(long id) {
+        return repository.findById(id).orElse(null);
+    }
+
     public void deleteTodoById (long id){
         this.repository.deleteById(id);
     }

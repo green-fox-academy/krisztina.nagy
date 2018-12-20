@@ -1,6 +1,8 @@
 package com.greenfoxacademy.databases.controller;
 
+import com.greenfoxacademy.databases.model.Assignee;
 import com.greenfoxacademy.databases.model.Todo;
+import com.greenfoxacademy.databases.repository.AssigneeService;
 import com.greenfoxacademy.databases.repository.TodoRepository;
 import com.greenfoxacademy.databases.repository.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +22,12 @@ public class TodoController {
 
 
     private TodoService todoSvc;
+    private AssigneeService assSvc;
 
     @Autowired
-    public TodoController (TodoService todoSvc) {
+    public TodoController (TodoService todoSvc, AssigneeService assSvc) {
         this.todoSvc = todoSvc;
-
+        this.assSvc = assSvc;
     }
 
     //@GetMapping ("/todo")
@@ -74,34 +77,19 @@ public class TodoController {
     return "redirect:/todo";
     }
 
-    @PostMapping (value = "/{id}/edit",
-            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String editTodo (@RequestBody MultiValueMap<String, String> formData, @PathVariable long id) {
+    @GetMapping ("/{id}/edit")
+    public String todoEditor (@PathVariable long id, Model model) {
 
-        Todo todo = todoSvc.getAll().stream()
-                .filter(tdo -> tdo.getId() == id)
-                .findAny().get();
-        todo.setTitle(formData.toSingleValueMap().get("edit-name"));
-
-        todo.setUrgent("on".equals(formData.toSingleValueMap().get("edit-urgent")));
-
-        todo.setDone("on".equals(formData.toSingleValueMap().get("edit-done")));
-
-        todoSvc.addTodo(todo);
-        //ezeket át kell tenni a service-be
-
-        return "redirect:/todo";
+        model.addAttribute("todo", todoSvc.getTodoById(id));
+        model.addAttribute("assignees", assSvc.getAll());
+        return "edittodo";
     }
 
-    @GetMapping ("/{id}/edit")
-    public String updateTodo (@PathVariable long id, Model model) {
-
-        model.addAttribute("todo", todoSvc.getAll().stream()
-                .filter(todo -> todo.getId()==id)
-                .findAny()
-                .orElse(null));
-
-        return "edittodo";
+    @PostMapping (value = "/{id}/edit")
+    public String updateTodo (Assignee assignee, @ModelAttribute Todo todo, @ModelAttribute List<Assignee> assignees) {
+        todo.setAssignee(assignee);
+        todoSvc.addTodo(todo);
+        return "redirect:/todo";
     }
 
     @PostMapping ("/todo/search")

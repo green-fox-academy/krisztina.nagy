@@ -6,12 +6,17 @@
 </head>
 <body>
 <h1>Edit Selected Todo</h1>
-<form method="post" th:action="'/' + ${todo.getId()} + '/edit'" id="edit-todo" >
-    <input type="hidden" name="id" th:value="${todo.getId()}"/>
-    <label>Title<input name="edit-name" type="text" th:value="${todo.getTitle()}"/></label>
-    <label>Urgent<input name="edit-urgent" type="checkbox" th:checked="${todo.isUrgent()}"/></label>
-    <label>Done<input name="edit-done" type="checkbox" th:checked="${todo.isDone()}"/></label>
-    <input type="submit" value="Submit" form="edit-todo"/>
+<form method="POST" action="#" th:action="@{/{id}/edit(id=${todo.getId()})}" th:object="${todo}"  >
+    <input type="hidden" th:field="*{id}" th:value="*{id}"/>
+    <label>Title<input th:field="*{title}" type="text" th:value="*{title}"/></label>
+    <label>Urgent<input th:field="*{urgent}" type="checkbox" th:checked="*{urgent}"/></label>
+    <label>Done<input th:field="*{done}" type="checkbox" th:checked="*{done}"/></label>
+    <label>Assignee
+        <select th:field="*{assignee}">
+            <option th:each="assignee : ${assignees}" th:text="${assignee.name}" th:value="${assignee}"></option>
+        </select>
+    </label>
+    <button>Update</button>
 </form>
 </body>
 </html>

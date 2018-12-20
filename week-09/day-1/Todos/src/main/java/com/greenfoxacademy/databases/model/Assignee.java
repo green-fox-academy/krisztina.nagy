@@ -1,8 +1,10 @@
 package com.greenfoxacademy.databases.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 
 @Entity
 public class Assignee {
@@ -13,6 +15,12 @@ public class Assignee {
 
     private String name;
     private String email;
+
+    /*@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Todo todo; */
 
     public Assignee() {
     }
