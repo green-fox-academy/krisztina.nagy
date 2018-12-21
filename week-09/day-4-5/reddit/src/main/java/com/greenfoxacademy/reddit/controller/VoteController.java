@@ -21,13 +21,13 @@ public VoteController(PostService postSvc) {
     @GetMapping("/{id}/upvote")
     public String upVotePost (@PathVariable long id) {
         postSvc.incrementRating(id);
-        return "redirect:/index";
+        return "redirect:/";
     }
 
     @GetMapping ("/{id}/downvote")
     public String downVotePost (@PathVariable long id) {
         postSvc.decrementRating(id);
-        return "redirect:/index";
+        return "redirect:/";
     }
 }
 
