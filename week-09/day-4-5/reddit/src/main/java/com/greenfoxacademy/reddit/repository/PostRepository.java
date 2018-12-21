@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 
 @Repository
 public interface PostRepository extends CrudRepository<Post, Long> {
@@ -15,12 +17,12 @@ Post findPostByIdEquals(long id);
 
     @Transactional
     @Modifying
-    @Query("UPDATE Post p SET p.rating = p.rating+1 WHERE p.id = :id")
-    int upVote(@Param("id") long id);
+    @Query("UPDATE Post p SET p.rating = p.rating+1, p.dateModified = :date WHERE p.id = :id")
+    int upVote(@Param("id") long id, @Param("date") Date date);
 
     @Transactional
     @Modifying
-    @Query("UPDATE Post p SET p.rating = p.rating-1 WHERE p.id = :id AND p.rating>-10")
-    int downVote(@Param("id") long id);
+    @Query("UPDATE Post p SET p.rating = p.rating-1, p.dateModified = :date WHERE p.id = :id AND p.rating>-10")
+    int downVote(@Param("id") long id, @Param("date") Date date);
 
 }

@@ -1,10 +1,13 @@
 package com.greenfoxacademy.reddit.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
+import sun.util.calendar.BaseCalendar;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.print.attribute.standard.DateTimeAtCreation;
+import java.util.Date;
 
 @Entity
 public class Post {
@@ -17,6 +20,16 @@ public class Post {
     private String url;
     private long rating;
 
+    @CreationTimestamp
+    @Temporal(TemporalType.DATE)
+    @Column (name = "date_created")
+    private Date dateCreated;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date_modified")
+    private Date dateModified;
+
     public Post() {
 
     }
@@ -25,6 +38,23 @@ public class Post {
         this.title = title;
         this.url = url;
         this.rating = 0;
+        this.dateCreated = new Date();
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated (Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public Date getDateModified() {
+        return dateModified;
+    }
+
+    public void setDateModified(Date dateModified) {
+        this.dateModified = dateModified;
     }
 
     public long getId() {

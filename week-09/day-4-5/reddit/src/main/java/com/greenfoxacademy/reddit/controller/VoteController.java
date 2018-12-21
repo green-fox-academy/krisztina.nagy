@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Date;
+
 @Controller
 public class VoteController {
 
@@ -20,13 +22,14 @@ public VoteController(PostService postSvc) {
 
     @GetMapping("/{id}/upvote")
     public String upVotePost (@PathVariable long id) {
-        postSvc.incrementRating(id);
+
+    postSvc.incrementRating(id, new Date());
         return "redirect:/";
     }
 
     @GetMapping ("/{id}/downvote")
     public String downVotePost (@PathVariable long id) {
-        postSvc.decrementRating(id);
+        postSvc.decrementRating(id, new Date() );
         return "redirect:/";
     }
 }

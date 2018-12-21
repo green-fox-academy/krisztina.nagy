@@ -13,6 +13,7 @@
     <p th:object="${post}"><a th:href="@{/{id}/upvote(id=${post.id})}">+</a></p>
     <p th:object="${post}"><a th:href="@{/{id}/downvote(id=${post.id})}">-</a></p>
     <p th:object="${post}" type=text th:field="*{title}" th:text="*{title}" th:value="*{title}"></p>
+    <p th:object="${post}" type=text th:field="*{dateCreated}" th:text="*{dateCreated}" th:value="*{dateCreated}"></p>
 </div>
 </body>
 </html>

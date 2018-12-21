@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -32,17 +33,17 @@ public class PostService {
         return posts;
     }
 
-    public void incrementRating (long id) {
+    public void incrementRating (long id, Date date) {
 
         /*Post upvotedPost = this.repo.findPostByIdEquals(id);
         upvotedPost.upVote();
         //sql-ben helyileg repo/queryvel kéne eztet
         this.repo.save(upvotedPost);*/
 
-        this.repo.upVote(id);
+        this.repo.upVote(id, date);
     }
 
-    public void decrementRating (long id) {
-        this.repo.downVote(id);
+    public void decrementRating (long id, Date date) {
+        this.repo.downVote(id, date);
     }
 }
