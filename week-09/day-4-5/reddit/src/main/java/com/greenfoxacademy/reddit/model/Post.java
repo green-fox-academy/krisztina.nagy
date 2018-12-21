@@ -46,4 +46,20 @@ public class Post {
     public long getRating() {
         return rating;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setRating(long rating) {
+        this.rating = rating;
+    }
 }

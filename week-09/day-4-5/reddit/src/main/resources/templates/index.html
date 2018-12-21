@@ -6,7 +6,7 @@
     <title>Reddit Clone</title>
 </head>
 <body>
-<a href="/submit">Submit a new post</a>
+<a href="newpost">Submit a new post</a>
 <h1>Trending posts</h1>
 <div th:each="post : ${posts}">
     <p th:object="${post}" type=number th:field="*{rating}" th:text="*{rating}" th:value="*{rating}"></p>
