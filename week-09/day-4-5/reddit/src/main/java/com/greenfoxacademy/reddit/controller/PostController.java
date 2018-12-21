@@ -31,6 +31,7 @@ public class PostController {
         model.addAttribute("post", new Post());
         return "newpost";
     }
+
     @PostMapping("/newpost")
     public String addPost (@ModelAttribute Post post) {
         postSvc.addPost(post);

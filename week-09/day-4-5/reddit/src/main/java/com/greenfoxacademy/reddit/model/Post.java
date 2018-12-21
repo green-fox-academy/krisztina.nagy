@@ -13,12 +13,8 @@ public class Post {
     @GeneratedValue
     private long id;
 
-
-
     private String title;
     private String url;
-
-
     private long rating;
 
     public Post() {
@@ -62,4 +58,8 @@ public class Post {
     public void setRating(long rating) {
         this.rating = rating;
     }
+
+    /*public void upVote(long id) {
+        this.rating
+    }*/
 }

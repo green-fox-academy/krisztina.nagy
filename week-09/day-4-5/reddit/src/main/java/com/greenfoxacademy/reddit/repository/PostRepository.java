@@ -20,7 +20,7 @@ Post findPostByIdEquals(long id);
 
     @Transactional
     @Modifying
-    @Query("UPDATE Post p SET p.rating = p.rating-1 WHERE p.id = :id")
+    @Query("UPDATE Post p SET p.rating = p.rating-1 WHERE p.id = :id AND p.rating>-10")
     int downVote(@Param("id") long id);
 
 }
