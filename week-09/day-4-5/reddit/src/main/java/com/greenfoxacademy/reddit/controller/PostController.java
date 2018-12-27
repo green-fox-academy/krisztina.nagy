@@ -5,10 +5,7 @@ import com.greenfoxacademy.reddit.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
@@ -21,8 +18,8 @@ public class PostController {
     }
 
     @GetMapping("/")
-    public String index (Model model) {
-        model.addAttribute("posts", postSvc.getAll());
+    public String index (Model model, @RequestParam(required = false, defaultValue = "0") int pageId ) {
+        model.addAttribute("posts", postSvc.getAll(pageId));
         return "index";
     }
 

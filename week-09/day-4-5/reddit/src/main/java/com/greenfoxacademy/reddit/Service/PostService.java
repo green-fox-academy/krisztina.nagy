@@ -3,6 +3,8 @@ package com.greenfoxacademy.reddit.Service;
 import com.greenfoxacademy.reddit.model.Post;
 import com.greenfoxacademy.reddit.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
@@ -26,12 +28,17 @@ public class PostService {
         }
     }
 
-    public List<Post> getAll() {
-        List<Post> posts = new ArrayList<>();
-        repo.findAll().forEach(posts::add);
+    public List<Post> getAll(int pageId) {
+        //List<Post> posts = new ArrayList<>();
+        //repo.findAllByOrderByRatingDesc();
+
+        //repo.orderedPosts().forEach(posts::add);
         //repository.findAll().forEach(todo -> todos.add(todo));
-        return posts;
+
+        return repo.findAllByOrderByRatingDesc(PageRequest.of(pageId, 10));
     }
+
+    //public List<Post>
 
     public void incrementRating (long id, Date date) {
 

@@ -29,7 +29,7 @@ public VoteController(PostService postSvc) {
 
     @GetMapping ("/{id}/downvote")
     public String downVotePost (@PathVariable long id) {
-        postSvc.decrementRating(id, new Date() );
+        postSvc.decrementRating(id, new Date());
         return "redirect:/";
     }
 }
