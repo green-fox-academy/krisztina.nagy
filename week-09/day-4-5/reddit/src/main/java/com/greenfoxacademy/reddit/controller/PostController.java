@@ -23,9 +23,13 @@ public class PostController {
     public String index (Model model, @RequestParam(required = false, defaultValue = "0") int pageId ) {
         List<Post> myPage = postSvc.getAll(pageId);
         List<Post> peekPage = postSvc.getAll(pageId+1);
+
+        //model.addAttribute("nextPageId", peekPage.size()>0 ? pageId+1 : pageId);
+        //model.addAttribute("prevPageId", pageId>0 ? pageId-1 : pageId);
+
         model.addAttribute("posts", myPage);
-        model.addAttribute("nextPageId", peekPage.size()>0 ? pageId+1 : pageId);
-        model.addAttribute("prevPageId", pageId>0 ? pageId-1 : pageId);
+        model.addAttribute("pageId", pageId);
+        model.addAttribute("isLastPage", peekPage.size()==0);
         return "index";
     }
 
