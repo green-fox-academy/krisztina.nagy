@@ -29,20 +29,20 @@ public class PostService {
     }
 
     public List<Post> getAll(int pageId) {
-        //List<Post> posts = new ArrayList<>();
-        //repo.findAllByOrderByRatingDesc();
+        /*leaving stuff here for my own educational purposes:
 
-        //repo.orderedPosts().forEach(posts::add);
-        //repository.findAll().forEach(todo -> todos.add(todo));
+        List<Post> posts = new ArrayList<>();
+        repo.findAllByOrderByRatingDesc();
+        repo.orderedPosts().forEach(posts::add);
+        repository.findAll().forEach(todo -> todos.add(todo));*/
 
         return repo.findAllByOrderByRatingDesc(PageRequest.of(pageId, 10));
     }
 
-    //public List<Post>
-
     public void incrementRating (long id, Date date) {
 
-        /*Post upvotedPost = this.repo.findPostByIdEquals(id);
+        /*leaving stuff here for my own educational purposes:
+        Post upvotedPost = this.repo.findPostByIdEquals(id);
         upvotedPost.upVote();
         //sql-ben helyileg repo/queryvel kéne eztet
         this.repo.save(upvotedPost);*/

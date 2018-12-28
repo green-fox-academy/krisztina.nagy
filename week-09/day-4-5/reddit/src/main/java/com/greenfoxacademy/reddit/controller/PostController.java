@@ -20,6 +20,11 @@ public class PostController {
     @GetMapping("/")
     public String index (Model model, @RequestParam(required = false, defaultValue = "0") int pageId ) {
         model.addAttribute("posts", postSvc.getAll(pageId));
+        model.addAttribute("nextPageId", pageId+1);
+
+        model.addAttribute("prevPageId", pageId>0 ? pageId-1 : pageId);
+
+        int lastPage =
         return "index";
     }
 

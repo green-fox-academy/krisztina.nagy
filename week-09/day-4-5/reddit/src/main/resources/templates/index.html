@@ -8,6 +8,12 @@
 <body>
 <a href="newpost">Submit a new post</a>
 <h1>Trending posts</h1>
+
+<div>
+    <a th:href="'/?pageId=' + ${prevPageId}">Previous page</a>
+    <a th:href="'/?pageId=' + ${nextPageId}">Next page</a>
+</div>
+
 <div th:each="post : ${posts}">
     <p th:object="${post}" type=number th:field="*{rating}" th:text="*{rating}" th:value="*{rating}"></p>
     <p th:object="${post}"><a th:href="@{/{id}/upvote(id=${post.id})}">+</a></p>
