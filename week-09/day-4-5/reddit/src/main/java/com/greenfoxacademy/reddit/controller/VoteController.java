@@ -26,7 +26,7 @@ public VoteController(PostService postSvc) {
     }
 
     @GetMapping ("/{id}/downvote")
-    public String downVotePost (@PathVariable long id, @RequestParam int pageId) {
+    public String downVotePost (@PathVariable long id, @RequestParam(defaultValue = "0") int pageId) {
         postSvc.decrementRating(id, new Date());
         return "redirect:/?pageId=" + pageId;
     }
