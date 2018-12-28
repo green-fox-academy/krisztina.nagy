@@ -1,12 +1,11 @@
 package com.greenfoxacademy.reddit.controller;
 
 import com.greenfoxacademy.reddit.Service.PostService;
+import com.greenfoxacademy.reddit.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -21,16 +20,15 @@ public VoteController(PostService postSvc) {
 }
 
     @GetMapping("/{id}/upvote")
-    public String upVotePost (@PathVariable long id) {
-
-    postSvc.incrementRating(id, new Date());
-        return "redirect:/";
+    public String upVotePost (@PathVariable long id, @RequestParam int pageId) {
+        postSvc.incrementRating(id, new Date());
+        return "redirect:/?pageId=" + pageId;
     }
 
     @GetMapping ("/{id}/downvote")
-    public String downVotePost (@PathVariable long id) {
+    public String downVotePost (@PathVariable long id, @RequestParam int pageId) {
         postSvc.decrementRating(id, new Date());
-        return "redirect:/";
+        return "redirect:/?pageId=" + pageId;
     }
 }
 
