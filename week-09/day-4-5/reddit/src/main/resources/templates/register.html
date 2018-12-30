@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,9 +16,9 @@
 <div>
     <h1>Welcome to my marvelous and very original Reddit app!</h1>
     <p>Please enter a name, so you can associate it to your posts!</p>
-    <form method="post" action="login" id="user-login">
-        <input name="user-name" type="text" placeholder="Username:"/>
-        <input type="submit" value="GO post stuff" form="user-login"/>
+    <form method="POST" action="#" th:action="@{/register}" th:object="${newUser}" id="new-user">
+        <input th:field="*{userName}" type="text" placeholder="Username:" required/>
+        <input type="submit" value="GO post stuff" form="new-user"/>
     </form>
 </div>
 

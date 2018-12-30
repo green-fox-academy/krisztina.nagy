@@ -28,18 +28,24 @@ public class PostController {
 
     @GetMapping("/")
     public String index (Model model, @RequestParam(required = false, defaultValue = "0") int pageId, HttpServletRequest request) {
-        List<Post> myPage = postSvc.getAll(pageId);
-        List<Post> peekPage = postSvc.getAll(pageId+1);
 
-        //model.addAttribute("nextPageId", peekPage.size()>0 ? pageId+1 : pageId);
-        //model.addAttribute("prevPageId", pageId>0 ? pageId-1 : pageId);
+        if (request.getSession().getAttribute("userId")!= null) {
+            List<Post> myPage = postSvc.getAll(pageId);
+            List<Post> peekPage = postSvc.getAll(pageId + 1);
 
-        //@SuppressWarnings("unchecked")
-        model.addAttribute("actualUser", userSvc.findUserByIdEquals((long)request.getSession().getAttribute("userId")));
-        model.addAttribute("posts", myPage);
-        model.addAttribute("pageId", pageId);
-        model.addAttribute("isLastPage", peekPage.size()==0);
-        return "index";
+            //leaving here for educational purposes
+            //model.addAttribute("nextPageId", peekPage.size()>0 ? pageId+1 : pageId);
+            //model.addAttribute("prevPageId", pageId>0 ? pageId-1 : pageId);
+
+            model.addAttribute("actualUser", userSvc.findUserByIdEquals((long) request.getSession().getAttribute("userId")));
+            model.addAttribute("posts", myPage);
+            model.addAttribute("pageId", pageId);
+            model.addAttribute("isLastPage", peekPage.size() == 0);
+            return "index";
+        }
+        else {
+            return "redirect:/login";
+        }
     }
 
     @GetMapping ("/newpost")

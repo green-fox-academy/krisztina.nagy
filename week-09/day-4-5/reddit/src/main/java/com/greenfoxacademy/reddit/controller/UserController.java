@@ -42,4 +42,22 @@ public class UserController {
             return "redirect:/register";
         }
     }
+
+    @GetMapping ("/register")
+    public String createUser (Model model) {
+        model.addAttribute("newUser", new User());
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String addUser (@ModelAttribute User newUser) {
+        if(userSvc.findUserByUserName(newUser.getUserName()) == null) {
+            userSvc.addUser(newUser);
+            return "redirect:/login";
+        }
+
+        else {
+            return "redirect:/login";
+        }
+    }
 }
