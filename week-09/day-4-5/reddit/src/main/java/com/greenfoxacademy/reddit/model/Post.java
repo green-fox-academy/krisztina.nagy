@@ -20,7 +20,6 @@ public class Post {
     private String url;
     private long rating;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user")
     private User user;

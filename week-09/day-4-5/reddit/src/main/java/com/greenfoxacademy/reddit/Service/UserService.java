@@ -29,4 +29,12 @@ public class UserService {
         this.repo.findAll().forEach(users::add);
         return users;
     }
+
+    public User findUserByUserName (String userName) {
+        return repo.findUserByUserName(userName);
+    }
+
+    public User findUserByIdEquals(long id){
+        return repo.findUserByIdEquals(id);
+    }
 }
