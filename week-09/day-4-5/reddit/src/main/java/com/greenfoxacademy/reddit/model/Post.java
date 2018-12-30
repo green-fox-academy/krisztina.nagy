@@ -20,6 +20,11 @@ public class Post {
     private String url;
     private long rating;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user")
+    private User user;
+
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
     @Column (name = "date_created")
@@ -34,11 +39,20 @@ public class Post {
 
     }
 
-    public Post(String title, String url) {
+    public Post(String title, String url, User user) {
         this.title = title;
         this.url = url;
         this.rating = 0;
         this.dateCreated = new Date();
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Date getDateCreated() {
