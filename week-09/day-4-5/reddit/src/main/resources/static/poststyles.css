@@ -1,3 +1,5 @@
-body
-div
-p {display: inline-block;}
+body{
+    padding: 1em 2em;}
+a, a:visited{color: #17a2b8}
+a:hover{color: goldenrod;
+    text-decoration: none;}

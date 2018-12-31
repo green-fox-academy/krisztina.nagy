@@ -60,4 +60,10 @@ public class UserController {
             return "redirect:/login";
         }
     }
+
+    @GetMapping("/exterminate")
+    public String destroySession(HttpServletRequest request) {
+        request.getSession().invalidate();
+        return "redirect:/";
+    }
 }
