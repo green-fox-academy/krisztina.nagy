@@ -10,4 +10,14 @@ public interface EntryService {
     void addEntry(Entry entry);
 
     List<Entry> getAllEntries();
+
+    void deleteEntryById(long id);
+
+    Entry getEntryByAlias(String requestedAlias);
+
+    String generateSecretCode();
+
+    Entry getEntryById(long id);
+
+    void increaseHitCountByAlias(String alias);
 }

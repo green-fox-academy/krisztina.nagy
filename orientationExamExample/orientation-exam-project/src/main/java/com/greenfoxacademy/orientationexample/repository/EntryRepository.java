@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EntryRepository extends CrudRepository<Entry, Long> {
     Entry findEntryByAlias(String requestedAlias);
+    Entry findEntryById(long id);
+
 
 }

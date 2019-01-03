@@ -1,9 +1,12 @@
 package com.greenfoxacademy.orientationexample.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@JsonIgnoreProperties("secretCode")
 @Entity
 public class Entry {
 
@@ -14,13 +17,24 @@ public class Entry {
     private String alias;
     private long hitCount;
 
+
+    private String secretCode;
+
     public Entry() {
     }
 
     public Entry(String url, String alias, long hitCount) {
         this.url = url;
         this.alias = alias;
-        this.hitCount = hitCount;
+        this.hitCount = 0;
+    }
+
+    public String getSecretCode() {
+        return secretCode;
+    }
+
+    public void setSecretCode(String secretCode) {
+        this.secretCode = secretCode;
     }
 
     public long getId() {
