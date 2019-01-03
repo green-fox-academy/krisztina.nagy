@@ -81,4 +81,24 @@ public class EntryController {
         return entries;
 
     }
+
+    //wrote this stuff but I'm not sure what to do with it... 
+    @DeleteMapping("/api/links/{id}")
+    public String deleteEntry(@PathVariable long id, @RequestBody String code, HttpServletResponse res) throws IOException {
+
+        if(entrySvc.getEntryById(id) != null && entrySvc.getEntryById(id).getSecretCode() == code) {
+            entrySvc.deleteEntryById(id);
+            res.sendError(204);
+            return null;
+        }
+        else if (entrySvc.getEntryById(id) != null){
+            res.sendError(403);
+            return null;
+        }
+        else {
+            res.sendError(404);
+            return null;
+        }
+
+    }
 }
