@@ -33,6 +33,10 @@ public class Entry {
         return secretCode;
     }
 
+    public int getSecretCodeAsInt() {
+        return Integer.parseInt(secretCode);
+    }
+
     public void setSecretCode(String secretCode) {
         this.secretCode = secretCode;
     }

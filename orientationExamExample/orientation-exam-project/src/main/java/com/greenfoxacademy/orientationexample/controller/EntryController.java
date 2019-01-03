@@ -1,5 +1,6 @@
 package com.greenfoxacademy.orientationexample.controller;
 
+import com.greenfoxacademy.orientationexample.model.DeleteInput;
 import com.greenfoxacademy.orientationexample.model.Entry;
 import com.greenfoxacademy.orientationexample.repository.EntryService;
 import com.greenfoxacademy.orientationexample.repository.EntryServiceImpl;
@@ -81,14 +82,13 @@ public class EntryController {
         return entries;
 
     }
-
-    //wrote this stuff but I'm not sure what to do with it... 
+    
     @DeleteMapping("/api/links/{id}")
-    public String deleteEntry(@PathVariable long id, @RequestBody String code, HttpServletResponse res) throws IOException {
+    public String deleteEntry(@PathVariable long id, @RequestBody DeleteInput deleteInput, HttpServletResponse res) throws IOException {
 
-        if(entrySvc.getEntryById(id) != null && entrySvc.getEntryById(id).getSecretCode() == code) {
+        if(entrySvc.getEntryById(id) != null && entrySvc.getEntryById(id).getSecretCodeAsInt() == (deleteInput.getSecretCode())) {
             entrySvc.deleteEntryById(id);
-            res.sendError(204);
+            res.setStatus(204);
             return null;
         }
         else if (entrySvc.getEntryById(id) != null){
