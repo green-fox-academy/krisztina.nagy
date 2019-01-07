@@ -1,14 +1,14 @@
 package com.greenfoxacademy.week10frontend.model;
 
-public class noParamError {
+public class NoParamError {
     
     private String error;
 
-    public noParamError() {
+    public NoParamError() {
         error = "Please provide an input!";
     }
 
-    public noParamError(String input){
+    public NoParamError(String input){
         error = String.format("Please provide a %s!", input);
     }
 

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 
 @RestController
@@ -17,7 +18,7 @@ public class ObjectController {
             return new Doubler(input);
         }
         else {
-            return new noParamError();
+            return new NoParamError();
         }
     }
 
@@ -30,13 +31,13 @@ public class ObjectController {
             return new AwesomeGreeting(name, title);
         }
         else if(name==null && title!=null) {
-            return new noParamError("name");
+            return new NoParamError("name");
         }
         else if(name!=null && title==null) {
-            return new noParamError("title");
+            return new NoParamError("title");
         }
         else{
-            return new noParamError();
+            return new NoParamError();
         }
 
     }
@@ -60,9 +61,29 @@ public class ObjectController {
         switch (action) {
             case "sum": return new SumUntil(myNumber);
             case "factor": return new FactorUntil(myNumber);
-            default: return new noParamError("number");
+            default: return new NoParamError("number");
+            }
+    }
+
+    @PostMapping("/arrays")
+    public Object arrayActions(@RequestBody ArrayInput aInput){
+        if (aInput.getNumbers()!=null && aInput.getWhat()!=null) {
+            switch (aInput.getWhat()) {
+                case "sum":
+                    return new ArraySummer(aInput.getNumbers());
+                case "multiply":
+                    return new ArrayMultiplier(aInput.getNumbers());
+                case "double":
+                    return new ArrayDoubler(aInput.getNumbers());
+                default:
+                    return new NoParamError("number");
             }
         }
+        else if (aInput.getNumbers()!=null){
+            return new ArrayError("Please provide what to do with the numbers!");
+        }
+        else return new ArrayError("Please provide the numbers!");
+    }
 
 
 }
