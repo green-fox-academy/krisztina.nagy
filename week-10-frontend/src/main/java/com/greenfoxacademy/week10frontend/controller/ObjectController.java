@@ -1,17 +1,12 @@
 package com.greenfoxacademy.week10frontend.controller;
 
-import com.greenfoxacademy.week10frontend.model.AppendA;
-import com.greenfoxacademy.week10frontend.model.AwesomeGreeting;
-import com.greenfoxacademy.week10frontend.model.Doubler;
-import com.greenfoxacademy.week10frontend.model.noParamError;
+import com.greenfoxacademy.week10frontend.model.*;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 
 @RestController
 public class ObjectController {
@@ -56,4 +51,18 @@ public class ObjectController {
             return null;
         }
     }
+
+    @PostMapping("/dountil/{action}")
+    public Object iterateAction (@PathVariable String action, @RequestBody HashMap<String, Integer> inputMap){
+
+        Integer myNumber = inputMap.get("until");
+
+        switch (action) {
+            case "sum": return new SumUntil(myNumber);
+            case "factor": return new FactorUntil(myNumber);
+            default: return new noParamError("number");
+            }
+        }
+
+
 }
