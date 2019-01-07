@@ -107,5 +107,10 @@ public class ObjectController {
         return Arrays.asList(entries, logSvc.countEntries());
     }
 
+    @PostMapping("/sith")
+    public Object sithReverser(@RequestBody SithInput sithInput){
+        return new SithText(sithInput.getText());
+    }
+
 
 }
