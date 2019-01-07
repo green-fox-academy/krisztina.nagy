@@ -8,6 +8,10 @@ public class noParamError {
         error = "Please provide an input!";
     }
 
+    public noParamError(String input){
+        error = String.format("Please provide a %s!", input);
+    }
+
     public String getError() {
         return error;
     }
