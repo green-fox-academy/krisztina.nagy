@@ -1,4 +1,4 @@
-package model;
+package com.greenfoxacademy.groot.model;
 
 public class GrootError {
 

@@ -1,4 +1,4 @@
-package Repository;
+package com.greenfoxacademy.groot.Repository;
 
 import org.springframework.stereotype.Service;
 

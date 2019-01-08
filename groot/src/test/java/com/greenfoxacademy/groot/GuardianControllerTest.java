@@ -1,7 +1,7 @@
 package com.greenfoxacademy.groot;
 
 
-import Controller.GuardianController;
+import com.greenfoxacademy.groot.Controller.GuardianController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +21,16 @@ public class GuardianControllerTest {
 
     @Test
     public void getGroot_withInput() throws Exception{
-this.mockMvc.perform(get("/groot?message=somemessage"))
-        .andExpect(status().isOk())
-        .andExpect(jsonPath("$.translated", is("I am Groot!")))
-        .andExpect(jsonPath("$.received", is("somemessage")));
+        this.mockMvc.perform(get("/groot?message=somemessage"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.translated", is("I am Groot!")))
+            .andExpect(jsonPath("$.received", is("somemessage")));
+    }
+
+    @Test
+    public void getGroot_withoutInput() throws Exception{
+        this.mockMvc.perform(get("/groot"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error", is("I am Groot!")));
     }
 }
