@@ -1,8 +1,7 @@
 package com.greenfoxacademy.groot.Controller;
 
-import com.greenfoxacademy.groot.model.GrootDto;
+import com.greenfoxacademy.groot.model.*;
 import com.greenfoxacademy.groot.model.Error;
-import com.greenfoxacademy.groot.model.YonduDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,4 +32,15 @@ public class GuardianController {
             return new ResponseEntity(new YonduDto(distance, time), HttpStatus.OK);
         }
     }
+    @GetMapping("/rocket")
+    public ResponseEntity<RocketDto> getCargo(){
+        return new ResponseEntity(new Rocket(), HttpStatus.OK);
+    }
+
+    @GetMapping("/rocket/fill")
+    public ResponseEntity<Object> fillCargo(@RequestParam String caliber, @RequestParam Integer amount){
+        return new ResponseEntity(new FillThatRocketDto(new Rocket(), new RocketCargoFill(caliber, amount)), HttpStatus.OK);
+
+    }
+
 }
