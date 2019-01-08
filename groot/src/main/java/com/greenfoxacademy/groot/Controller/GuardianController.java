@@ -1,7 +1,8 @@
 package com.greenfoxacademy.groot.Controller;
 
 import com.greenfoxacademy.groot.model.GrootDto;
-import com.greenfoxacademy.groot.model.GrootError;
+import com.greenfoxacademy.groot.model.Error;
+import com.greenfoxacademy.groot.model.YonduDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,17 @@ public class GuardianController {
             return new ResponseEntity(new GrootDto(message), HttpStatus.OK);
         }
         else {
-            return new ResponseEntity(new GrootError("I am Groot!"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Error("I am Groot!"), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/yondu")
+    public ResponseEntity<YonduDto> getYondu(@RequestParam(required = false) Float distance,
+                                             @RequestParam(required = false) Float time){
+        if(distance==null || time == null){
+            return new ResponseEntity(new Error("Please provide the distance and the time!"), HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity(new YonduDto(distance, time), HttpStatus.OK);
         }
     }
 }

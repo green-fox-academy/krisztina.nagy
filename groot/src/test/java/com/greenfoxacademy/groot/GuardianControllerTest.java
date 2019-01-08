@@ -33,4 +33,55 @@ public class GuardianControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.error", is("I am Groot!")));
     }
+
+
+
+    @Test
+    public void getYondu_withInput() throws Exception{
+        this.mockMvc.perform(get("/yondu?distance=100.0&time=10.0"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.speed", is(10.0)));
+    }
+
+    @Test
+    public void getYondu_withZeroTimeInput() throws Exception{
+        this.mockMvc.perform(get("/yondu?distance=1.0&time=0.0"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.speed", is("Infinity")));
+    }
+
+    @Test
+    public void getYondu_withZeroDistanceInput() throws Exception{
+        this.mockMvc.perform(get("/yondu?distance=0.0&time=1.0"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.speed", is(0.0)));
+    }
+
+    @Test
+    public void getYondu_withZeroInputs() throws Exception{
+        this.mockMvc.perform(get("/yondu?distance=0.0&time=0.0"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.speed", is("NaN")));
+    }
+
+    @Test
+    public void getYondu_withNoTime() throws Exception{
+        this.mockMvc.perform(get("/yondu?distance=0.0"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error", is("Please provide the distance and the time!")));
+    }
+
+    @Test
+    public void getYondu_withNoDistance() throws Exception{
+        this.mockMvc.perform(get("/yondu?time=0.0"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error", is("Please provide the distance and the time!")));
+    }
+
+    @Test
+    public void getYondu_withNoInputs() throws Exception{
+        this.mockMvc.perform(get("/yondu"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error", is("Please provide the distance and the time!")));
+    }
 }

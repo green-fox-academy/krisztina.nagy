@@ -1,13 +1,13 @@
 package com.greenfoxacademy.groot.model;
 
-public class GrootError {
+public class Error {
 
     public String error;
 
-    public GrootError() {
+    public Error() {
     }
 
-    public GrootError(String error) {
+    public Error(String error) {
         this.error = error;
     }
 }
