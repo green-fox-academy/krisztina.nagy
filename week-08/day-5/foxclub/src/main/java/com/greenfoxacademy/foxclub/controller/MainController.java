@@ -3,7 +3,6 @@ package com.greenfoxacademy.foxclub.controller;
 import com.greenfoxacademy.foxclub.exceptions.NameAlreadyExistsException;
 import com.greenfoxacademy.foxclub.model.Aye;
 import com.greenfoxacademy.foxclub.model.Zoo;
-import com.greenfoxacademy.foxclub.repository.ZooAyes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -23,7 +22,7 @@ public class MainController {
     public MainController(Zoo zoo) {
         this.zoo = zoo;
         try {
-            zoo.addAye(new Aye("AyeCaptain", "http://drive.google.com/uc?export=view&id=1Mue8_sGbSyQ9VH-gmv5eb_H6wnGf_Rd6"));
+            zoo.addAye(new Aye("AyeCaptain");
         } catch (NameAlreadyExistsException e) {
             e.printStackTrace();
         }
@@ -45,9 +44,7 @@ public class MainController {
     public String createPet(@RequestBody MultiValueMap<String, String> formData) {
 
         Aye newAye = new Aye(
-                formData.toSingleValueMap().get("name"),
-                formData.toSingleValueMap().get("img-url")
-        );
+                formData.toSingleValueMap().get("name"));
         try {
             zoo.addAye(newAye);
         } catch (NameAlreadyExistsException e) {

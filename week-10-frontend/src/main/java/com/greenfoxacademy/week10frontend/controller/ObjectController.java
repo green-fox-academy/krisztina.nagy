@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 public class ObjectController {
@@ -67,7 +68,7 @@ public class ObjectController {
 
     @PostMapping("/arrays")
     public Object arrayActions(@RequestBody ArrayInput aInput){
-        if (aInput.getNumbers()!=null && aInput.getWhat()!=null) {
+        if (aInput.getNumbers()!=null && aInput.getWhat()!=null ) {
             switch (aInput.getWhat()) {
                 case "sum":
                     return new ArraySummer(aInput.getNumbers());
@@ -83,6 +84,11 @@ public class ObjectController {
             return new ArrayError("Please provide what to do with the numbers!");
         }
         else return new ArrayError("Please provide the numbers!");
+    }
+
+    @GetMapping("/log")
+    public List<Log> getLog (){
+        return Arrays.asList()
     }
 
 

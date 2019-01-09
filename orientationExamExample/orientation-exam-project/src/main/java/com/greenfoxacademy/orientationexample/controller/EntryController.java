@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 public class EntryController {
     private EntryService entrySvc;
 
@@ -82,7 +82,7 @@ public class EntryController {
         return entries;
 
     }
-    
+
     @DeleteMapping("/api/links/{id}")
     public String deleteEntry(@PathVariable long id, @RequestBody DeleteInput deleteInput, HttpServletResponse res) throws IOException {
 

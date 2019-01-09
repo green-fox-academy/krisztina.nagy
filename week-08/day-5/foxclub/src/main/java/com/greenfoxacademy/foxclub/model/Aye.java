@@ -20,7 +20,7 @@ public class Aye {
         private final String foodName;
 
         Food (String food_name) {
-            this.foodName =food_name;
+            this.foodName = food_name;
         }
 
         public String toString() {
@@ -96,9 +96,9 @@ public class Aye {
         return tricks;
     }
 
-    public Aye(String name, String imgPath) {
+    public Aye(String name) {
         this.name = name;
-        this.imgPath = imgPath;
+        this.imgPath = "http://drive.google.com/uc?export=view&id=1Mue8_sGbSyQ9VH-gmv5eb_H6wnGf_Rd6";
         this.food = Food.BASIC;
         this.drink = Drink.BASIC;
     }

@@ -19,6 +19,7 @@ public class PrintController {
 
     @GetMapping ("/useful")
     public String useful () {
+
         return "index";
     }
 

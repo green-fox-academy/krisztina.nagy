@@ -18,7 +18,7 @@
     <h1>Welcome to my marvelous and very original Reddit app!</h1>
     <p>Please enter a name, so you can associate it to your posts!</p>
     <form method="POST" action="#" th:action="@{/register}" th:object="${newUser}" id="new-user">
-        <input th:field="*{userName}" type="text" placeholder="Username:" required/>
+        <input th:field="*{userName}" type="text" placeholder="Username:" autofocus required/>
         <input type="submit" value="GO post stuff" form="new-user"/>
     </form>
 </div>

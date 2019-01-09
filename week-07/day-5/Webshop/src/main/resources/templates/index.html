@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>MyShop</title>
@@ -22,19 +23,25 @@
 </form>
 
 <table>
+    <thead>
     <tr>
+        <th>Id</th>
         <th>Name</th>
         <th>Description</th>
         <th>Price</th>
-        <th>Quantity of stock</th>
+        <th>Quantity</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
-        <td>dummy data</td>
-        <td>awesome dummy</td>
-        <td>muchalot</td>
-        <td>12</td>
-
+    <tr th:each="item : ${items}">
+        <td th:text="${item.getId()}"></td>
+        <td th:text="${item.getName()}"></td>
+        <td th:text="${item.getDescription()}"></td>
+        <td th:text="${item.getPrice()}"></td>
+        <td th:text="${item.quantity}"></td>
     </tr>
+    </tbody>
 </table>
 
 

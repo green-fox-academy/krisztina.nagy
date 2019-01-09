@@ -40,5 +40,5 @@ public class ObjectControllerTest {
             .andExpect(jsonPath("$.result", is(10)))
             .andExpect(jsonPath("$.received", is(5)));
     }
-    
+
 }
