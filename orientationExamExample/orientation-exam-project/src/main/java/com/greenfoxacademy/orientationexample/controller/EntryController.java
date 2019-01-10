@@ -33,7 +33,12 @@ public class EntryController {
 
     @GetMapping("/")
     public String showMainPage(Model model, HttpServletRequest request){
+        if(request.getSession().getAttribute("prevUrl")!=null && (int)request.getSession().getAttribute("msg")==2){
+        model.addAttribute("entry", new Entry(request.getSession().getAttribute("prevUrl").toString(), ""));
+        }
+        else{
         model.addAttribute("entry", new Entry());
+        }
         Object msg = request.getSession().getAttribute("msg");
         model.addAttribute("message", msg);
 
@@ -48,6 +53,7 @@ public class EntryController {
     public String saveLink (@ModelAttribute Entry entry, HttpServletRequest request){
 
         if (entrySvc.getEntryByAlias(entry.getAlias()) == null){
+            System.out.println(request.getSession().getAttribute("prevUrl"));
             entry.setSecretCode(entrySvc.generateSecretCode());
             entrySvc.addEntry(entry);
             request.getSession().setAttribute("msg", 1);
@@ -56,6 +62,7 @@ public class EntryController {
         }
         else {
             request.getSession().setAttribute("msg", 2);
+            request.getSession().setAttribute("prevUrl", entry.getUrl());
             return "redirect:/";
         }
 

@@ -23,7 +23,7 @@ public class Entry {
     public Entry() {
     }
 
-    public Entry(String url, String alias, long hitCount) {
+    public Entry(String url, String alias) {
         this.url = url;
         this.alias = alias;
         this.hitCount = 0;
