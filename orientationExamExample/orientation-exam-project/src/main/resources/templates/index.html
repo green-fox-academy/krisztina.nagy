@@ -10,7 +10,7 @@
 <div th:if="${message==2}" style="color: darkred">Your alias is already in use</div>
 <form method="POST" action="#" th:action="@{/save-link}" th:object="${entry}" id="new-entry">
     <label for="url">URL</label><br>
-    <input id="url" th:field="*{url}" type="text" autofocus/><br>
+    <input id="url" th:field="*{url}" type="url" autofocus/><br>
     <label for="alias">Alias</label><br>
     <input id="alias" th:field="*{alias}" type="text" required/><br>
     <input type="submit" value="Submit" form="new-entry"/><br>
