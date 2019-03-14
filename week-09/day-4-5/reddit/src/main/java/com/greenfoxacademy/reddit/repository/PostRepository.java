@@ -16,18 +16,19 @@ import java.util.List;
 
 @Repository
 public interface PostRepository extends PagingAndSortingRepository<Post, Long> {
-    Post findPostByIdEquals(long id);
-    List<Post> findAllByOrderByRatingDesc(Pageable pageable);
+  Post findPostByIdEquals(long id);
 
-    @Transactional
-    @Modifying
-    @Query("UPDATE Post p SET p.rating = p.rating+1, p.dateModified = :date WHERE p.id = :id")
-    int upVote(@Param("id") long id, @Param("date") Date date);
+  List<Post> findAllByOrderByRatingDesc(Pageable pageable);
 
-    @Transactional
-    @Modifying
-    @Query("UPDATE Post p SET p.rating = p.rating-1, p.dateModified = :date WHERE p.id = :id AND p.rating>-10")
-    int downVote(@Param("id") long id, @Param("date") Date date);
+  @Transactional
+  @Modifying
+  @Query("UPDATE Post p SET p.rating = p.rating+1, p.dateModified = :date WHERE p.id = :id")
+  int upVote(@Param("id") long id, @Param("date") Date date);
+
+  @Transactional
+  @Modifying
+  @Query("UPDATE Post p SET p.rating = p.rating-1, p.dateModified = :date WHERE p.id = :id AND p.rating>-10")
+  int downVote(@Param("id") long id, @Param("date") Date date);
 
     /*@Query("FROM Post p ORDER BY p.rating DESC")
     List<Post> orderedPosts();*/

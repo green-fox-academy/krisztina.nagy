@@ -7,36 +7,37 @@ import javax.persistence.Id;
 @Entity
 public class User {
 
-    @Id
-    @GeneratedValue
-    private long id;
+  @Id
+  @GeneratedValue
+  private long id;
 
-    private String userName;
-    //private String userPassword;
+  private String userName;
+  //private String userPassword;
 
-    public User(){
+  public User() {
 
-    }
-    public User(String userName) {
-        this.userName = userName;
-        //this.userPassword = userPassword;
-    }
+  }
 
-    public long getId() {
-        return id;
-    }
+  public User(String userName) {
+    this.userName = userName;
+    //this.userPassword = userPassword;
+  }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public String getUserName() {
-        return userName;
-    }
+  public void setId(long id) {
+    this.id = id;
+  }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+  public String getUserName() {
+    return userName;
+  }
+
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
 
     /*public String getUserPassword() {
         return userPassword;
@@ -45,7 +46,6 @@ public class User {
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }*/
-
 
 
 }

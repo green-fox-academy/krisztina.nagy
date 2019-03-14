@@ -15,20 +15,20 @@ import java.util.List;
 @Service
 public class PostService {
 
-    PostRepository repo;
+  PostRepository repo;
 
-    @Autowired
-    public PostService (PostRepository repo) {
-        this.repo = repo;
+  @Autowired
+  public PostService(PostRepository repo) {
+    this.repo = repo;
+  }
+
+  public void addPost(Post post) {
+    if (post != null) {
+      this.repo.save(post);
     }
+  }
 
-    public void addPost(Post post) {
-        if (post !=null) {
-            this.repo.save(post);
-        }
-    }
-
-    public List<Post> getAll(int pageId) {
+  public List<Post> getAll(int pageId) {
         /*leaving stuff here for my own educational purposes:
 
         List<Post> posts = new ArrayList<>();
@@ -36,10 +36,10 @@ public class PostService {
         repo.orderedPosts().forEach(posts::add);
         repository.findAll().forEach(todo -> todos.add(todo));*/
 
-        return repo.findAllByOrderByRatingDesc(PageRequest.of(pageId, 10));
-    }
+    return repo.findAllByOrderByRatingDesc(PageRequest.of(pageId, 10));
+  }
 
-    public void incrementRating (long id, Date date) {
+  public void incrementRating(long id, Date date) {
 
         /*leaving stuff here for my own educational purposes:
         Post upvotedPost = this.repo.findPostByIdEquals(id);
@@ -47,10 +47,10 @@ public class PostService {
         //sql-ben helyileg repo/queryvel kéne eztet
         this.repo.save(upvotedPost);*/
 
-        this.repo.upVote(id, date);
-    }
+    this.repo.upVote(id, date);
+  }
 
-    public void decrementRating (long id, Date date) {
-        this.repo.downVote(id, date);
-    }
+  public void decrementRating(long id, Date date) {
+    this.repo.downVote(id, date);
+  }
 }

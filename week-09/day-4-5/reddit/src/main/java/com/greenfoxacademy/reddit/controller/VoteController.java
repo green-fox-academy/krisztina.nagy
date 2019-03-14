@@ -12,23 +12,23 @@ import java.util.Date;
 @Controller
 public class VoteController {
 
-private PostService postSvc;
+  private PostService postSvc;
 
-@Autowired
-public VoteController(PostService postSvc) {
-    this.postSvc=postSvc;
-}
+  @Autowired
+  public VoteController(PostService postSvc) {
+    this.postSvc = postSvc;
+  }
 
-    @GetMapping("/{id}/upvote")
-    public String upVotePost (@PathVariable long id, @RequestParam int pageId) {
-        postSvc.incrementRating(id, new Date());
-        return "redirect:/?pageId=" + pageId;
-    }
+  @GetMapping("/{id}/upvote")
+  public String upVotePost(@PathVariable long id, @RequestParam int pageId) {
+    postSvc.incrementRating(id, new Date());
+    return "redirect:/?pageId=" + pageId;
+  }
 
-    @GetMapping ("/{id}/downvote")
-    public String downVotePost (@PathVariable long id, @RequestParam(defaultValue = "0") int pageId) {
-        postSvc.decrementRating(id, new Date());
-        return "redirect:/?pageId=" + pageId;
-    }
+  @GetMapping("/{id}/downvote")
+  public String downVotePost(@PathVariable long id, @RequestParam(defaultValue = "0") int pageId) {
+    postSvc.decrementRating(id, new Date());
+    return "redirect:/?pageId=" + pageId;
+  }
 }
 
